@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emberwing Courier — island bush flying</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<canvas id="game-canvas"></canvas>
+<div id="hud-root"></div>
+
+<!-- Title -->
+<div class="screen active" id="screen-title">
+  <div class="panel title-panel">
+    <div class="kicker">MAKE.FUN · BEST FLIGHT GAME</div>
+    <h1>EMBERWING<br>COURIER</h1>
+    <p class="tagline">Fly a bush plane between volcanic island airstrips. Thread the rings,
+      drop the cargo, skim the sea to scoop water and douse the volcano wildfire,
+      land on strips shorter than your patience.</p>
+    <p class="counts">7 missions · 3 aircraft · 32 rings · 3 wildfires · 4 islands · fuel, water &amp; damage · day, dusk &amp; night</p>
+    <div class="btn-row">
+      <button id="btn-fly" class="btn primary">Fly</button>
+      <button id="btn-help" class="btn">How to fly</button>
+    </div>
+    <p class="stats" id="title-stats"></p>
+    <p class="foot">Keyboard + mouse · works offline · sounds synthesised live</p>
+  </div>
+</div>
+
+<!-- Hangar -->
+<div class="screen" id="screen-hangar">
+  <div class="panel wide">
+    <h2>Hangar — pick your aircraft</h2>
+    <div id="hangar-list" class="card-list"></div>
+    <div class="btn-row">
+      <button id="btn-hangar-back" class="btn">Back</button>
+      <button id="btn-hangar-next" class="btn primary">Missions →</button>
+    </div>
+  </div>
+</div>
+
+<!-- Missions -->
+<div class="screen" id="screen-missions">
+  <div class="panel wide">
+    <h2>Missions — the Ember Isles need a courier</h2>
+    <div id="missions-list" class="card-list"></div>
+    <div class="btn-row">
+      <button id="btn-missions-back" class="btn">Back</button>
+    </div>
+  </div>
+</div>
+
+<!-- Briefing -->
+<div class="screen" id="screen-briefing">
+  <div class="panel">
+    <h2 id="briefing-title"></h2>
+    <p id="briefing-text"></p>
+    <p id="briefing-plane" class="dim"></p>
+    <div class="btn-row">
+      <button id="btn-briefing-back" class="btn">Back</button>
+      <button id="btn-briefing-fly" class="btn primary">Take off</button>
+    </div>
+  </div>
+</div>
+
+<!-- Pause -->
+<div class="screen" id="screen-pause">
+  <div class="panel">
+    <h2>Paused</h2>
+    <p>The islands will wait. The fuel gauge will not.</p>
+    <div class="btn-row">
+      <button id="btn-pause-resume" class="btn primary">Resume</button>
+      <button id="btn-pause-restart" class="btn">Restart mission</button>
+      <button id="btn-pause-quit" class="btn">Missions</button>
+    </div>
+  </div>
+</div>
+
+<!-- Debrief -->
+<div class="screen" id="screen-debrief">
+  <div class="panel wide">
+    <h2 id="debrief-title"></h2>
+    <div id="debrief-stars" class="stars big"></div>
+    <div id="debrief-table"></div>
+    <div class="btn-row">
+      <button id="btn-debrief-replay" class="btn primary">Fly it again</button>
+      <button id="btn-debrief-missions" class="btn">Missions</button>
+    </div>
+  </div>
+</div>
+
+<!-- Crash -->
+<div class="screen" id="screen-crash">
+  <div class="panel">
+    <h2 id="crash-title">Crashed!</h2>
+    <p id="crash-text"></p>
+    <div class="btn-row">
+      <button id="btn-crash-retry" class="btn primary">Try again</button>
+      <button id="btn-crash-missions" class="btn">Missions</button>
+    </div>
+  </div>
+</div>
+
+<!-- Help -->
+<div class="screen" id="screen-help">
+  <div class="panel wide">
+    <h2>How to fly</h2>
+    <table class="keys">
+      <tr><td>↑ / W</td><td>Climb (pull up)</td><td>↓ / S</td><td>Descend (push down)</td></tr>
+      <tr><td>← → / A D</td><td>Bank left / right — bank turns the plane</td><td>Q / E</td><td>Rudder</td></tr>
+      <tr><td>Shift</td><td>Throttle up</td><td>Ctrl</td><td>Throttle down</td></tr>
+      <tr><td>Mouse drag</td><td>Steer pitch &amp; roll</td><td>Wheel</td><td>Throttle trim</td></tr>
+      <tr><td>Space</td><td>Drop cargo crate / water (fire mission)</td><td>G</td><td>Landing gear up / down</td></tr>
+      <tr><td>F</td><td>Flaps (more lift, more drag)</td><td>B</td><td>Brakes (on the ground)</td></tr>
+      <tr><td>C</td><td>Chase / cockpit camera</td><td>P / Esc</td><td>Pause</td></tr>
+      <tr><td>M</td><td>Mute</td><td>R</td><td>Restart mission</td></tr>
+    </table>
+    <h3>Flying the Isles</h3>
+    <p>Keep above stall speed (watch the airspeed tape — below it the wing quits
+      and the nose drops). Bank to turn; a steep bank needs back pressure or you
+      sink. Line up on the runway early, gear down, throttle back, and touch down
+      under 2 m/s sink for a perfect landing. Fuel burns faster at full throttle;
+      an empty tank means a glide, not a flight. Rings glow gold — fly through the
+      hoop, not past it. On the fire mission, skim the sea with the gear up,
+      under 7 m and at 25–55 m/s, to scoop water; one tank holds three drops.
+      Landings count only when the objectives are done.</p>
+    <div class="btn-row">
+      <button id="btn-help-close" class="btn primary">Back</button>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
